@@ -1,77 +1,40 @@
-**Rytchie's Web Developer Portfolio**
+# Rytchie Macharia Portfolio
 
-Welcome to my portfolio! This repository showcases my skills, projects, and experience as a web developer. Here you can explore my work and learn more about my journey in the field of front-end development.
+This repository now contains a production-ready Next.js App Router migration of the original static portfolio site.
 
-# Table of Contents
+## Stack
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- Next.js
+- TypeScript
+- Tailwind CSS
+- ESLint + Prettier
 
-# Introduction
+## Development
 
-I am Rytchie, a passionate Front-End Developer dedicated to creating visually appealing and user-friendly web experiences.
-With expertise in HTML, CSS, JavaScript, and Python, I bring innovative ideas to life through code.
-Explore my portfolio to see how I can help bring your project to life!
+Install dependencies and start the app:
 
-# Features
+```bash
+npm install
+npm run dev
+```
 
-- Responsive Design:** Optimized for all devices and screen sizes.
-- Interactive Elements:** Smooth animations and transitions.
-- Social Media Integration:** Links to my profiles on Facebook, Twitter, and LinkedIn.
-- Downloadable CV:** Option to download my resume directly from the site.
+Build for production:
 
-## Installation
+```bash
+npm run build
+```
 
-To view or contribute to my portfolio, follow these steps:
+## Structure
 
-1. Clone the repository:
+- `app/` app router pages, metadata, robots, and sitemap routes
+- `components/` reusable UI sections
+- `lib/` shared site content
+- `public/` static images and downloadable files
+- `styles/` global styling and animations
+- `types/` shared TypeScript types
 
-    bash
-    git clone https://github.com/yourusername/your-repo-name.git
+## Notes
 
-
-2. Navigate to the project directory:
-
-    bash
-    cd your-repo-name
-
-
-3. Open the `index.html` file in your web browser to view the portfolio:
-
-    bash
-    open index.html
-   
-
-# Usage
-
-Feel free to explore the following sections of my portfolio:
-
-- Home: Introduction and call-to-action buttons.
-- About: Information about me and my expertise.
-- Education: Details about my educational background and experience.
-- Skills: Overview of my coding and professional skills.
-- Contact: Contact form to get in touch with me.
-
-##Contributing
-
-If you'd like to contribute to this project, please fork the repository and submit a pull request with your changes. Ensure that you follow the coding standards and provide clear descriptions of your modifications.
-
-# License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-# Contact
-
-For any inquiries or feedback, please feel free to reach out to me:
-
-- Email: rytchie1957@gmail.com
-- LinkedIn: [Rytchie Macharia](https://www.linkedin.com/in/rytchie-macharia-042184325/)
-- Twitter: [@Rytchie101](https://x.com/Rytchie101)
-- Facebook: [Rytchie254](https://www.facebook.com/Rytchie254/)
-
-Thank you for visiting my portfolio!
+- The original assets were preserved and copied into `public/images` and `public/files`.
+- The contact form still posts to Formspree.
+- The site metadata now includes Open Graph, Twitter, canonical, robots, and sitemap support.
