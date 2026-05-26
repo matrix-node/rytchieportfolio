@@ -1,14 +1,15 @@
-import type { MetadataRoute } from "next";
+import type { MetadataRoute } from 'next';
 
-import { siteConfig } from "@/lib/site-content";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rytchiamacharia.dev';
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
-      userAgent: "*",
-      allow: "/",
+      userAgent: '*',
+      allow: '/',
+      disallow: ['/api/'],
     },
-    sitemap: `${siteConfig.url}/sitemap.xml`,
-    host: new URL(siteConfig.url).host,
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }

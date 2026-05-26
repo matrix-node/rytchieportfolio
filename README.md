@@ -1,40 +1,20 @@
-# Rytchie Macharia Portfolio
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-This repository now contains a production-ready Next.js App Router migration of the original static portfolio site.
+# Run and deploy your AI Studio app
 
-## Stack
+This contains everything you need to run your app locally.
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- ESLint + Prettier
+View your app in AI Studio: https://ai.studio/apps/4f578b32-2432-41b8-9689-8f0f1a0a9a1b
 
-## Development
+## Run Locally
 
-Install dependencies and start the app:
+**Prerequisites:**  Node.js
 
-```bash
-npm install
-npm run dev
-```
 
-Build for production:
-
-```bash
-npm run build
-```
-
-## Structure
-
-- `app/` app router pages, metadata, robots, and sitemap routes
-- `components/` reusable UI sections
-- `lib/` shared site content
-- `public/` static images and downloadable files
-- `styles/` global styling and animations
-- `types/` shared TypeScript types
-
-## Notes
-
-- The original assets were preserved and copied into `public/images` and `public/files`.
-- The contact form still posts to Formspree.
-- The site metadata now includes Open Graph, Twitter, canonical, robots, and sitemap support.
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

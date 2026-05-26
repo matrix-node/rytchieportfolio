@@ -1,40 +1,68 @@
-import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import type { Metadata } from 'next';
+import { Inter, JetBrains_Mono } from 'next/font/google';
+import './globals.css';
 
-import { siteConfig } from "@/lib/site-content";
-import "@/styles/globals.css";
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+});
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rytchiamacharia.dev';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: siteConfig.title,
-    template: "%s | Rytchie Macharia",
+    default: 'Rytchie Macharia | Frontend Developer Portfolio',
+    template: '%s | Rytchie Macharia',
   },
-  description: siteConfig.description,
-  keywords: [...siteConfig.keywords],
+  description:
+    'Personal developer portfolio of Rytchie Macharia, showcasing frontend engineering, Linux systems, cybersecurity learning, and high-performance web experiences.',
+  keywords: [
+    'Rytchie Macharia',
+    'Matrix portfolio',
+    'Frontend Developer Kenya',
+    'Next.js portfolio',
+    'TypeScript',
+    'React developer',
+    'Linux',
+    'Cybersecurity',
+  ],
+  authors: [{ name: 'Rytchie Macharia' }],
+  creator: 'Rytchie Macharia',
+  publisher: 'Matrix',
   alternates: {
-    canonical: "/",
+    canonical: '/',
   },
   openGraph: {
-    title: "Rytchie Macharia Portfolio",
-    description: "Full Stack Developer and Cybersecurity Enthusiast",
-    url: siteConfig.url,
-    siteName: "Rytchie Macharia",
-    type: "website",
+    title: 'Rytchie Macharia | Frontend Developer Portfolio',
+    description:
+      'Obsidian Protocol portfolio: futuristic, high-performance frontend engineering with polished UI and smooth 3D-inspired interactions.',
+    url: siteUrl,
+    siteName: 'Matrix Portfolio',
+    type: 'website',
+    locale: 'en_US',
     images: [
       {
-        url: siteConfig.ogImage,
+        url: '/images/rytchie.jpg',
         width: 1200,
         height: 630,
-        alt: "Rytchie Macharia portfolio preview",
+        alt: 'Rytchie Macharia portfolio preview',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Rytchie Macharia Portfolio",
-    description: "Full Stack Developer and Cybersecurity Enthusiast",
-    images: [siteConfig.ogImage],
+    card: 'summary_large_image',
+    title: 'Rytchie Macharia | Frontend Developer Portfolio',
+    description:
+      'Futuristic, recruiter-ready developer portfolio with high-performance UI, 3D-inspired visuals, and strong frontend engineering.',
+    images: ['/images/rytchie.jpg'],
   },
   robots: {
     index: true,
@@ -42,21 +70,21 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
     },
   },
-  icons: {
-    icon: "/images/favicon.png",
-  },
 };
 
-export const viewport = {
-  themeColor: "#081b29",
-};
-
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${inter.variable} ${jetbrainsMono.variable}`}>{children}</body>
     </html>
   );
 }
