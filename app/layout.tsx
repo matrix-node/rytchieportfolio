@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Rytchie Macharia",
   },
   description: siteConfig.description,
-  keywords: siteConfig.keywords,
+  keywords: [...siteConfig.keywords],
   alternates: {
     canonical: "/",
   },
@@ -47,6 +47,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/images/favicon.png",
   },
+};
+
+export const viewport = {
   themeColor: "#081b29",
 };
 
