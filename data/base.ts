@@ -8,11 +8,11 @@ export const USER_PROFILE = {
   subHeadline: "I’m Rytchie Macharia — a frontend-focused developer, full-stack learner, cybersecurity enthusiast, Linux user, and IT instructor building fast, polished, human-friendly web experiences.",
   location: "Nakuru, Kenya",
   timezone: "UTC+3",
-  email: "hello@rytchiamacharia.dev",
-  github: "https://github.com/rytchiamacharia",
-  linkedin: "https://linkedin.com/in/rytchiamacharia",
-  twitter: "https://twitter.com/rytchiamacharia",
-  cvLink: "#",
+  email: "rytchiemacharia@gmail.com",
+  github: "https://github.com/matrix-node",
+  linkedin: "https://linkedin.com/in/richard-macharia/",
+  twitter: "https://x.com/rytchiemacharia",
+  cvLink: "https://richardmacharia.pro",
   avatarUrl: "/images/rytchie.jpg"
 };
 
@@ -55,7 +55,7 @@ export function smoothCoordinates(current: Point, last: Point, factor: number = 
     status: "Live",
     category: "System Administration",
     imageUrl: "/images/rytchie3.jpeg",
-    githubUrl: "https://github.com/rytchiamacharia/arch-dotfiles",
+    githubUrl: "https://github.com/matrix-node/arch-dotfiles",
     liveUrl: "#",
     architectureNotes: "Modularized styling patterns leveraging symbolic system configurations linked securely via GNU Stow namespaces.",
     challenges: "Configuring flawless multi-monitor scaling on wayland protocols with hybrid NVIDIA and Intel GPUs.",
