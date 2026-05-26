@@ -50,10 +50,13 @@
   --bg-primary: var(--color-bg-light);
   --text-primary: #0f172a;
   --text-muted: #64748b;
-  --card-bg: rgba(255, 255, 255, 0.88);
-  --card-border: rgba(15, 23, 42, 0.08);
-  --grid-color: rgba(15, 23, 42, 0.02);
-  --theme-glow: rgba(15, 23, 42, 0.05);
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --card-border: rgba(15, 23, 42, 0.12);
+  --grid-color: rgba(15, 23, 42, 0.03);
+  --theme-glow: rgba(15, 23, 42, 0.06);
+  --panel-bg: rgba(255, 255, 255, 0.9);
+  --panel-bg-soft: rgba(255, 255, 255, 0.74);
+  --panel-text: #0f172a;
 }
 
 body {
@@ -134,6 +137,42 @@ body {
 
 .bg-glass-bg {
   background-color: var(--card-bg) !important;
+}
+
+.theme-light .text-primary,
+.theme-light .text-primary-fixed,
+.theme-light .text-secondary,
+.theme-light .text-outline,
+.theme-light .text-on-surface-variant {
+  color: var(--panel-text) !important;
+}
+
+.theme-light .border-white\/10,
+.theme-light .border-white\/5 {
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+.theme-light .bg-\[\#15151e\]\/50,
+.theme-light .bg-\[\#12121A\]\/80,
+.theme-light .bg-\[\#12121A\],
+.theme-light .bg-black\/60,
+.theme-light .bg-black\/40 {
+  background-color: var(--panel-bg-soft) !important;
+}
+
+.theme-light .bg-black,
+.theme-light .bg-slate-950\/90,
+.theme-light .bg-slate-950\/40 {
+  background-color: var(--panel-bg) !important;
+}
+
+.theme-light .bg-\[\#0e0e12\],
+.theme-light .bg-\[\#0e0e12\]\/95 {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.theme-light .glass-panel {
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.05);
 }
 
 @keyframes blink {

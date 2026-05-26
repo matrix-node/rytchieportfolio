@@ -4,7 +4,11 @@ import Image from 'next/image';
 import { motion } from 'motion/react';
 import { User, ShieldCheck, Cpu, Terminal, Sparkles, BookOpen } from 'lucide-react';
 
-export default function AboutSection() {
+interface AboutSectionProps {
+  theme?: 'dark' | 'light';
+}
+
+export default function AboutSection({ theme = 'dark' }: AboutSectionProps) {
   const cards = [
     {
       title: 'Frontend Development',
@@ -82,8 +86,13 @@ export default function AboutSection() {
                     alt="Rytchie Macharia thinking visual mode"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-cover filter grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-95 transition-all duration-700"
+                    className={`object-cover transition-all duration-700 ${
+                      theme === 'dark'
+                        ? 'saturate-110 contrast-100 opacity-95 group-hover:saturate-115 group-hover:opacity-100'
+                        : 'saturate-112 contrast-100 opacity-96'
+                    }`}
                     priority={false}
+                    quality={80}
                   />
                 </div>
                 

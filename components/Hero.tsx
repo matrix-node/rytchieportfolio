@@ -8,9 +8,10 @@ import StatusDashboard from '@/components/StatusDashboard';
 
 interface HeroProps {
   onCtaClick: (hash: string) => void;
+  theme: 'dark' | 'light';
 }
 
-export default function Hero({ onCtaClick }: HeroProps) {
+export default function Hero({ onCtaClick, theme }: HeroProps) {
   return (
     <section id="home" className="min-h-screen pt-28 pb-16 flex items-center relative border-b border-[#3a494a]/10">
       <div className="absolute inset-y-0 right-0 w-full lg:w-1/2 overflow-hidden pointer-events-none z-0">
@@ -91,8 +92,13 @@ export default function Hero({ onCtaClick }: HeroProps) {
                     alt="Rytchie Macharia Headshot"
                     fill
                     sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="object-fit-override object-cover rounded-sm filter grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 pointer-events-none"
+                    className={`object-cover rounded-sm transition-all duration-700 pointer-events-none ${
+                      theme === 'dark'
+                        ? 'saturate-105 contrast-100 brightness-100 group-hover:saturate-110'
+                        : 'saturate-110 contrast-100 brightness-100'
+                    }`}
                     priority
+                    quality={82}
                   />
                 </div>
 

@@ -54,7 +54,7 @@ export default function Hero3DScene() {
     if (!ctx) return;
 
     // Build particle network
-    const particleCount = dimensions.width < 640 ? 25 : 55;
+    const particleCount = dimensions.width < 640 ? 18 : 34;
     const particles: Array<{
       x: number;
       y: number;
@@ -68,8 +68,8 @@ export default function Hero3DScene() {
       particles.push({
         x: Math.random() * dimensions.width,
         y: Math.random() * dimensions.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
         radius: Math.random() * 2 + 1,
         glow: Math.random() * 0.5 + 0.3
       });

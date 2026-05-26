@@ -63,8 +63,8 @@ export default function HomePage() {
 
       <Navbar activeSection={activeSection} theme={theme} setTheme={handleSetTheme} />
 
-      <Hero onCtaClick={handleCtaClick} />
-      <AboutSection />
+      <Hero onCtaClick={handleCtaClick} theme={theme} />
+      <AboutSection theme={theme} />
       <SkillsSection />
       <ProjectsGrid onSelectProject={(p) => setSelectedProject(p)} />
       <GallerySection />
