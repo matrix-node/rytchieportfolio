@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 import ThemeToggle from '@/components/ThemeToggle';
 
 interface NavbarProps {
@@ -105,6 +105,16 @@ export default function Navbar({ activeSection, theme, setTheme }: NavbarProps) 
             className="p-1.5 rounded border border-[#00f5ff]/20 bg-black/40 text-on-surface-variant hover:text-[#00f5ff] hover:-translate-y-0.5 transition-all outline-none focus:ring-1 focus:ring-primary-container cursor-pointer"
           />
 
+          {/* Resume Download */}
+          <a
+            href="/files/resume.pdf"
+            download
+            className="p-1.5 rounded border border-[#00f5ff]/20 bg-black/40 text-on-surface-variant hover:text-[#00f5ff] hover:-translate-y-0.5 transition-all outline-none focus:ring-1 focus:ring-primary-container cursor-pointer flex items-center gap-1"
+            title="Download Resume"
+          >
+            <Download className="w-4 h-4" />
+          </a>
+
           {/* Contact Fast Trigger */}
           <button
             onClick={() => handleLinkClick('#contact')}
@@ -153,12 +163,23 @@ export default function Navbar({ activeSection, theme, setTheme }: NavbarProps) 
               );
             })}
           </div>
-          <button
-            onClick={() => handleLinkClick('#contact')}
-            className="w-full py-3 bg-black/40 text-[#00f5ff] border border-[#00f5ff]/35 font-mono text-[11px] font-bold tracking-widest hover:bg-[#00f5ff]/15 transition-all text-center rounded-sm uppercase cursor-pointer"
-          >
-            [ CONTACT_FAST_SECURE ]
-          </button>
+          <div className="flex gap-2">
+            <a
+              href="/files/resume.pdf"
+              download
+              className="flex-1 py-3 bg-black/40 text-[#00f5ff] border border-[#00f5ff]/35 font-mono text-[11px] font-bold tracking-widest hover:bg-[#00f5ff]/15 transition-all text-center rounded-sm flex items-center justify-center gap-2 uppercase"
+              title="Download Resume"
+            >
+              <Download className="w-4 h-4" />
+              Resume
+            </a>
+            <button
+              onClick={() => handleLinkClick('#contact')}
+              className="flex-1 py-3 bg-black/40 text-[#00f5ff] border border-[#00f5ff]/35 font-mono text-[11px] font-bold tracking-widest hover:bg-[#00f5ff]/15 transition-all text-center rounded-sm uppercase cursor-pointer"
+            >
+              [ CONTACT_FAST_SECURE ]
+            </button>
+          </div>
         </div>
       )}
     </header>

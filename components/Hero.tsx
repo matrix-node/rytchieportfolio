@@ -55,11 +55,8 @@ export default function Hero({ onCtaClick, theme }: HeroProps) {
                 Contact Me
               </button>
               <a
-                href={USER_PROFILE.cvLink}
-                onClick={(e) => {
-                  e.preventDefault();
-                  alert("Rytchie Macharia's Portfolio CV System Compiled // Available on Contact Dispatch.");
-                }}
+                href="/files/resume.pdf"
+                download
                 className="inline-flex items-center gap-1.5 px-4 py-3 border border-dashed border-outline/35 text-on-surface-variant hover:text-primary-fixed hover:border-[#00f5ff]/50 font-mono text-xs uppercase text-center rounded-sm transition-all cursor-pointer"
               >
                 <Download className="w-4 h-4" /> Download CV
