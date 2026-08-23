@@ -14,7 +14,7 @@ export default function SectionHeader({ icon, label, title, description }: Secti
         {icon}
         <span className="font-mono text-[10px] tracking-widest uppercase text-outline">{label}</span>
       </div>
-      <h2 className="text-3xl md:text-4xl font-semibold text-primary font-sans uppercase">{title}</h2>
+      <h2 className="text-3xl md:text-4xl font-semibold text-on-surface font-sans uppercase">{title}</h2>
       <p className="font-sans text-sm text-on-surface-variant max-w-xl mt-2 leading-relaxed">{description}</p>
     </div>
   );

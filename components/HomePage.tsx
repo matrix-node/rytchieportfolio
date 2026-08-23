@@ -10,26 +10,15 @@ import ProjectsGrid from '@/components/ProjectsGrid';
 import GallerySection from '@/components/GallerySection';
 import TimelineSection from '@/components/TimelineSection';
 import ServicesSection from '@/components/ServicesSection';
-import BlogSection from '@/components/BlogSection';
+import BlogSection, { type JournalTeaser } from '@/components/BlogSection';
 import ContactSection from '@/components/ContactSection';
 import ProjectDrawer from '@/components/ProjectDrawer';
 import Footer from '@/components/Footer';
 import type { Project } from '@/types';
 
-export default function HomePage() {
+export default function HomePage({ journalPosts }: { journalPosts: JournalTeaser[] }) {
   const [activeSection, setActiveSection] = useState('home');
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('rytch-theme') as 'dark' | 'light' | null;
-    setTheme(savedTheme || 'dark');
-  }, []);
-
-  const handleSetTheme = (newTheme: 'dark' | 'light') => {
-    setTheme(newTheme);
-    localStorage.setItem('rytch-theme', newTheme);
-  };
 
   useEffect(() => {
     const sectionIds = ['home', 'about', 'skills', 'projects', 'tech-life', 'timeline', 'services', 'blog', 'contact'];
@@ -58,19 +47,19 @@ export default function HomePage() {
   };
 
   return (
-    <div className={`min-h-screen relative w-full overflow-x-hidden ${theme === 'dark' ? 'theme-dark' : 'theme-light'}`}>
+    <div className="min-h-screen relative w-full overflow-x-hidden">
       <div className="absolute inset-0 cyber-grid-bg pointer-events-none z-0" />
 
-      <Navbar activeSection={activeSection} theme={theme} setTheme={handleSetTheme} />
+      <Navbar activeSection={activeSection} />
 
-      <Hero onCtaClick={handleCtaClick} theme={theme} />
-      <AboutSection theme={theme} />
+      <Hero onCtaClick={handleCtaClick} />
+      <AboutSection />
       <SkillsSection />
       <ProjectsGrid onSelectProject={(p) => setSelectedProject(p)} />
       <GallerySection />
       <TimelineSection />
       <ServicesSection />
-      <BlogSection />
+      <BlogSection posts={journalPosts} />
       <ContactSection />
 
       <Footer />

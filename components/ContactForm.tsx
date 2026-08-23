@@ -28,7 +28,7 @@ export default function ContactForm({ formData, onChange, onSubmit }: ContactFor
             required
             value={formData.name}
             onChange={onChange}
-            className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#00f5ff]/60 focus:outline-none text-primary font-mono text-xs rounded-sm transition-all"
+            className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#adc6ff]/60 focus:outline-none text-on-surface font-mono text-xs rounded-sm transition-all"
           />
         </div>
         <div className="space-y-1">
@@ -42,7 +42,7 @@ export default function ContactForm({ formData, onChange, onSubmit }: ContactFor
             required
             value={formData.email}
             onChange={onChange}
-            className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#00f5ff]/60 focus:outline-none text-primary font-mono text-xs rounded-sm transition-all"
+            className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#adc6ff]/60 focus:outline-none text-on-surface font-mono text-xs rounded-sm transition-all"
           />
         </div>
       </div>
@@ -56,7 +56,7 @@ export default function ContactForm({ formData, onChange, onSubmit }: ContactFor
           id="subject"
           value={formData.subject}
           onChange={onChange}
-          className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#00f5ff]/60 focus:outline-none text-primary font-mono text-xs rounded-sm transition-all"
+          className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#adc6ff]/60 focus:outline-none text-on-surface font-mono text-xs rounded-sm transition-all"
         />
       </div>
       <div className="space-y-1">
@@ -70,12 +70,12 @@ export default function ContactForm({ formData, onChange, onSubmit }: ContactFor
           rows={5}
           value={formData.message}
           onChange={onChange}
-          className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#00f5ff]/60 focus:outline-none text-primary font-sans text-xs rounded-sm transition-all resize-none"
+          className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#adc6ff]/60 focus:outline-none text-on-surface font-sans text-xs rounded-sm transition-all resize-none"
         />
       </div>
       <button
         type="submit"
-        className="w-full py-3 bg-[#00f5ff] hover:bg-[#00d0d8] text-[#003739] font-mono text-xs font-bold uppercase tracking-widest rounded-sm transition-all"
+        className="w-full py-3 bg-[#adc6ff] hover:bg-[#00d0d8] text-[#003739] font-mono text-xs font-bold uppercase tracking-widest rounded-sm transition-all"
       >
         TRANSMIT_PACKET
       </button>

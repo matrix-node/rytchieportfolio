@@ -64,19 +64,19 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-20 relative text-left select-text">
       {/* Glow highlight */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#00f5ff]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#adc6ff]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Title elements */}
         <div className="mb-14">
           <div className="flex items-center gap-2 mb-2">
-            <Mail className="w-4 h-4 text-[#63f7ff]" />
+            <Mail className="w-4 h-4 text-[#adc6ff]" />
             <span className="font-mono text-[10px] tracking-widest uppercase text-outline">
               SECURE_TELEMETRY // CHANNELS
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-primary font-sans uppercase">
+          <h2 className="text-3xl md:text-4xl font-semibold text-on-surface font-sans uppercase">
             Let&apos;s talk shop
           </h2>
           <p className="font-sans text-sm text-on-surface-variant max-w-xl mt-2 leading-relaxed">
@@ -101,19 +101,19 @@ export default function ContactSection() {
 
             {/* Direct coordinate badges */}
             <div className="space-y-3 font-mono text-xs">
-              <div className="flex items-center gap-3 p-3.5 bg-[#15151e]/50 border border-white/10 rounded-xl shadow-lg">
-                <MapPin className="w-4 h-4 text-[#00f5ff]" />
+              <div className="flex items-center gap-3 p-3.5 bg-[#1c2026]/50 border border-white/10 rounded-xl shadow-lg">
+                <MapPin className="w-4 h-4 text-[#adc6ff]" />
                 <div>
                   <span className="text-outline block text-[9px] uppercase">LOCALE</span>
-                  <span className="text-primary font-medium">{USER_PROFILE.location} // {USER_PROFILE.timezone}</span>
+                  <span className="text-on-surface font-medium">{USER_PROFILE.location} // {USER_PROFILE.timezone}</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 p-3.5 bg-[#15151e]/50 border border-white/10 rounded-xl shadow-lg">
-                <Mail className="w-4 h-4 text-[#fbffbb]" />
+              <div className="flex items-center gap-3 p-3.5 bg-[#1c2026]/50 border border-white/10 rounded-xl shadow-lg">
+                <Mail className="w-4 h-4 text-[#ffb786]" />
                 <div>
                   <span className="text-outline block text-[9px] uppercase">DIRECT_MAIL</span>
-                  <a href={`mailto:${USER_PROFILE.email}`} className="text-primary hover:text-[#00f5ff] hover:underline transition-all">
+                  <a href={`mailto:${USER_PROFILE.email}`} className="text-on-surface hover:text-[#adc6ff] hover:underline transition-all">
                     {USER_PROFILE.email}
                   </a>
                 </div>
@@ -138,7 +138,7 @@ export default function ContactSection() {
                       href={soc.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="w-10 h-10 rounded-xl border border-white/10 bg-[#15151e]/50 hover:border-[#00f5ff]/40 hover:text-primary flex items-center justify-center text-on-surface-variant transition-all cursor-pointer shadow-lg"
+                      className="w-10 h-10 rounded-xl border border-white/10 bg-[#1c2026]/50 hover:border-[#adc6ff]/40 hover:text-on-surface flex items-center justify-center text-on-surface-variant transition-all cursor-pointer shadow-lg"
                       title={soc.name}
                     >
                       <Icon className="w-4 h-4" />
@@ -150,11 +150,11 @@ export default function ContactSection() {
           </div>
 
           {/* Right panel terminal contact form */}
-          <div className="lg:col-span-7 bg-[#15151e]/50 border border-white/10 rounded-xl overflow-hidden shadow-2xl backdrop-blur-sm">
+          <div className="lg:col-span-7 bg-[#1c2026]/50 border border-white/10 rounded-xl overflow-hidden shadow-2xl backdrop-blur-sm">
             {/* Form control bar */}
-            <div className="bg-[#0e0e12] px-4 py-3 border-b border-white/5 flex justify-between items-center select-none">
+            <div className="bg-[#181c22] px-4 py-3 border-b border-white/5 flex justify-between items-center select-none">
               <div className="flex items-center gap-1.5">
-                <Terminal className="w-3.5 h-3.5 text-[#00f5ff]" />
+                <Terminal className="w-3.5 h-3.5 text-[#adc6ff]" />
                 <span className="font-mono text-[9px] text-[#849495] tracking-widest uppercase">
                   TRANSMITTER_V1.02_LOADED
                 </span>
@@ -179,7 +179,7 @@ export default function ContactSection() {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="e.g. Linus Torvalds"
-                        className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#00f5ff]/60 focus:outline-none text-primary font-mono text-xs rounded-sm transition-all"
+                        className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#adc6ff]/60 focus:outline-none text-on-surface font-mono text-xs rounded-sm transition-all"
                       />
                     </div>
                     <div className="space-y-1">
@@ -194,7 +194,7 @@ export default function ContactSection() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="e.g. linus@kernel.org"
-                        className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#00f5ff]/60 focus:outline-none text-primary font-mono text-xs rounded-sm transition-all"
+                        className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#adc6ff]/60 focus:outline-none text-on-surface font-mono text-xs rounded-sm transition-all"
                       />
                     </div>
                   </div>
@@ -210,7 +210,7 @@ export default function ContactSection() {
                       value={formData.subject}
                       onChange={handleInputChange}
                       placeholder="e.g. Website construction // Arch help"
-                      className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#00f5ff]/60 focus:outline-none text-primary font-mono text-xs rounded-sm transition-all"
+                      className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#adc6ff]/60 focus:outline-none text-on-surface font-mono text-xs rounded-sm transition-all"
                     />
                   </div>
 
@@ -226,13 +226,13 @@ export default function ContactSection() {
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Got some bugs acting possessed or layouts shifting maliciously? Let me know..."
-                      className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#00f5ff]/60 focus:outline-none text-primary font-sans text-xs rounded-sm transition-all resize-none"
+                      className="w-full px-3 py-2 bg-black border border-white/10 focus:border-[#adc6ff]/60 focus:outline-none text-on-surface font-sans text-xs rounded-sm transition-all resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3 bg-[#00f5ff] hover:bg-[#00d0d8] text-[#003739] font-mono text-xs font-bold uppercase tracking-widest rounded-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_15px_rgba(0,245,255,0.15)] focus:outline-none active:scale-[0.98]"
+                    className="w-full py-3 bg-[#adc6ff] hover:bg-[#00d0d8] text-[#003739] font-mono text-xs font-bold uppercase tracking-widest rounded-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_15px_rgba(173,198,255,0.15)] focus:outline-none active:scale-[0.98]"
                   >
                     <Send className="w-4 h-4" /> TRANSMIT_PACKET
                   </button>
@@ -243,16 +243,16 @@ export default function ContactSection() {
               {txState === 'TRANSMITTING' && (
                 <div className="py-8 text-center space-y-6">
                   <div className="relative w-12 h-12 mx-auto">
-                    <div className="absolute inset-0 border-2 border-[#00f5ff]/10 rounded-full" />
-                    <div className="absolute inset-0 border-2 border-t-[#00f5ff] rounded-full animate-spin" />
+                    <div className="absolute inset-0 border-2 border-[#adc6ff]/10 rounded-full" />
+                    <div className="absolute inset-0 border-2 border-t-[#adc6ff] rounded-full animate-spin" />
                   </div>
                   <div className="text-left max-w-sm mx-auto p-4 bg-black rounded border border-white/10 space-y-1.5 font-mono text-[10px]">
                     {txLogs.map((log, lIdx) => (
-                      <div key={lIdx} className="text-[#00f5ff]">
+                      <div key={lIdx} className="text-[#adc6ff]">
                         {log}
                       </div>
                     ))}
-                    <div className="w-1.5 h-3.5 bg-[#00f5ff] animate-pulse inline-block" />
+                    <div className="w-1.5 h-3.5 bg-[#adc6ff] animate-pulse inline-block" />
                   </div>
                 </div>
               )}
@@ -262,7 +262,7 @@ export default function ContactSection() {
                 <div className="py-8 text-center space-y-5">
                   <CheckCircle2 className="w-12 h-12 text-[#10B981] mx-auto animate-bounce" />
                   <div className="space-y-2">
-                    <h3 className="font-mono text-sm uppercase text-primary tracking-widest leading-relaxed">
+                    <h3 className="font-mono text-sm uppercase text-on-surface tracking-widest leading-relaxed">
                       // SECURE_DISPATCH: RESOLVED
                     </h3>
                     <p className="text-xs text-on-surface-variant max-w-sm mx-auto font-sans leading-relaxed">
@@ -271,7 +271,7 @@ export default function ContactSection() {
                   </div>
                   <button
                     onClick={handleReset}
-                    className="px-4 py-2 border border-[#3a494a]/30 text-primary-fixed hover:border-[#00f5ff]/45 font-mono text-[9px] uppercase tracking-wider rounded transition-all cursor-pointer focus:outline-none"
+                    className="px-4 py-2 border border-[#424754]/30 text-primary-fixed hover:border-[#adc6ff]/45 font-mono text-[9px] uppercase tracking-wider rounded transition-all cursor-pointer focus:outline-none"
                   >
                     [ NEW_TRANSMISSION ]
                   </button>

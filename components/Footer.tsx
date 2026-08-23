@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="py-8 bg-[#07070a]/90 border-t border-[#3a494a]/20 select-none text-left font-mono">
+    <footer className="py-8 bg-[#07070a]/90 border-t border-[#424754]/20 select-none text-left font-mono">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-outline">
         <div className="space-y-1 text-center md:text-left">
           <p className="text-primary-fixed font-bold tracking-widest uppercase">// DESIGNED_IN_OBSIDIAN_PROTOCOL</p>

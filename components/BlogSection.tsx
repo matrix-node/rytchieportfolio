@@ -1,40 +1,36 @@
 "use client";
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { FileText, BookOpen, Clock, AlertCircle, ChevronDown, ChevronUp } from 'lucide-react';
-import { BlogPost } from '../types';
-import { BLOG_POSTS } from '../data';
+import { FileText, Clock, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
-export default function BlogSection() {
-  const [activeCategory, setActiveCategory] = useState<string>('ALL');
-  const [expandedPostId, setExpandedPostId] = useState<string | null>(null);
+export interface JournalTeaser {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: number;
+  tags: string[];
+}
 
-  const categories = ['ALL', 'Web Development', 'Linux', 'Cybersecurity', 'Teaching', 'Networking'];
-
-  const filteredPosts = activeCategory === 'ALL'
-    ? BLOG_POSTS
-    : BLOG_POSTS.filter(b => b.category === activeCategory);
-
-  const toggleExpand = (id: string, status: string) => {
-    if (status === 'Coming Soon') return;
-    setExpandedPostId(expandedPostId === id ? null : id);
-  };
+export default function BlogSection({ posts }: { posts: JournalTeaser[] }) {
+  const [activeTag, setActiveTag] = useState<string>('ALL');
+  const tags = ['ALL', ...Array.from(new Set(posts.flatMap((p) => p.tags))).sort()];
+  const visible = activeTag === 'ALL' ? posts : posts.filter((p) => p.tags.includes(activeTag));
 
   return (
-    <section id="blog" className="py-20 border-b border-[#3a494a]/10 relative text-left">
+    <section id="blog" className="py-20 border-b border-outline-variant/20 relative text-left">
       <div className="max-w-7xl mx-auto px-6">
-        
-        {/* Title details */}
+
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <FileText className="w-4 h-4 text-[#fbffbb]" />
+              <FileText className="w-4 h-4 text-tertiary" />
               <span className="font-mono text-[10px] tracking-widest uppercase text-outline">
                 DIAGNOSTIC_PAPERS // ARCHIVES
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-semibold text-primary font-sans uppercase">
+            <h2 className="text-3xl md:text-4xl font-semibold text-on-surface font-sans uppercase">
               Technical Logs &amp; Notes
             </h2>
             <p className="font-sans text-sm text-on-surface-variant max-w-xl mt-2 leading-relaxed">
@@ -42,109 +38,64 @@ export default function BlogSection() {
             </p>
           </div>
 
-          {/* Filtering buttons pills */}
           <div className="flex flex-wrap gap-2 justify-start">
-            {categories.map((cat) => (
+            {tags.map((tag) => (
               <button
-                key={cat}
-                onClick={() => {
-                  setActiveCategory(cat);
-                  setExpandedPostId(null);
-                }}
+                key={tag}
+                onClick={() => setActiveTag(tag)}
                 className={`px-3 py-1.5 font-mono text-[9px] uppercase tracking-wider transition-all rounded-sm cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary-container ${
-                  activeCategory === cat
-                    ? 'border border-[#fbffbb]/80 bg-[#fbffbb]/10 text-[#fbffbb]'
-                    : 'border border-[#3a494a]/25 text-on-surface-variant hover:border-[#fbffbb]/50 hover:text-primary-fixed'
+                  activeTag === tag
+                    ? 'border border-tertiary/80 bg-tertiary/10 text-tertiary'
+                    : 'border border-outline-variant/40 text-on-surface-variant hover:border-tertiary/50 hover:text-primary-fixed'
                 }`}
               >
-                [ {cat} ]
+                [ {tag} ]
               </button>
             ))}
           </div>
         </div>
 
-        {/* Blog layout grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredPosts.map((post) => {
-            const isExpanded = expandedPostId === post.id;
-            const isComingSoon = post.status === 'Coming Soon';
-
-            return (
-              <div
-                key={post.id}
-                className={`border transition-all text-left flex flex-col justify-between overflow-hidden bg-[#15151e]/50 p-6 rounded-xl shadow-lg ${
-                  isComingSoon
-                    ? 'border-white/5 opacity-60'
-                    : isExpanded
-                      ? 'border-[#fbffbb]/40 hover:border-[#fbffbb]/60'
-                      : 'border-white/10 hover:border-[#fbffbb]/30 cursor-pointer hover:shadow-[0_0_15px_rgba(251,255,187,0.04)]'
-                }`}
-                onClick={() => toggleExpand(post.id, post.status)}
-              >
-                <div className="space-y-3">
-                  {/* Category, Status, Time */}
-                  <div className="flex justify-between items-center">
-                    <span className="font-mono text-[9px] uppercase tracking-wider text-outline px-2 py-0.5 border border-white/5 bg-black/40 rounded-sm">
-                      {post.category}
-                    </span>
-
-                    <div className="flex items-center gap-3 font-mono text-[9px]">
-                      <span className="flex items-center gap-1 text-[#fbffbb]">
-                        <Clock className="w-3 h-3" /> {post.readTime}
-                      </span>
-                      {isComingSoon ? (
-                        <span className="px-1.5 py-0.5 border border-amber-400/25 text-amber-300 bg-amber-400/5 uppercase rounded-sm font-semibold tracking-wider">
-                          Coming Soon
-                        </span>
-                      ) : (
-                        <span className="px-1.5 py-0.5 border border-[#10B981]/25 text-[#10B981] bg-[#10B981]/5 uppercase rounded-sm font-semibold tracking-wider">
-                          Active
-                        </span>
-                      )}
-                    </div>
+          {visible.slice(0, 6).map((post) => (
+            <Link
+              key={post.slug}
+              href={`/notes/journal/${post.slug}`}
+              className="group border border-white/10 hover:border-tertiary/40 transition-all text-left flex flex-col justify-between overflow-hidden bg-surface-container/50 p-6 rounded-xl shadow-lg cursor-pointer hover:shadow-[0_0_15px_rgba(255,183,134,0.05)]"
+            >
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-outline px-2 py-0.5 border border-white/5 bg-black/40 rounded-sm">
+                    {post.tags[0] ?? 'Note'}
+                  </span>
+                  <div className="flex items-center gap-1 font-mono text-[9px] text-tertiary">
+                    <Clock className="w-3 h-3" /> {post.readTime} min
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-base font-bold text-primary font-sans leading-snug">
-                    {post.title}
-                  </h3>
-
-                  {/* Short excerpt */}
-                  <p className="text-xs text-on-surface-variant leading-relaxed">
-                    {post.excerpt}
-                  </p>
-
-                  {/* Interactive Expandable Post Body */}
-                  <AnimatePresence>
-                    {isExpanded && post.content && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="pt-4 border-t border-[#3a494a]/20 mt-4 overflow-hidden"
-                        onClick={(e) => e.stopPropagation() /* prevent collapse trigger */}
-                      >
-                        <p className="text-xs text-[#b9caca] whitespace-pre-line leading-relaxed font-sans">
-                          {post.content}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
                 </div>
 
-                {/* Card action indicator */}
-                {!isComingSoon && (
-                  <div className="mt-4 pt-3 border-t border-white/[0.03] flex justify-between items-center text-[10px] font-mono select-none text-[#fbffbb]/80 font-semibold uppercase">
-                    <span>
-                      {isExpanded ? 'Collapse technical archive' : 'Decompile full entry'}
-                    </span>
-                    {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-                  </div>
-                )}
+                <h3 className="text-base font-bold text-on-surface font-sans leading-snug group-hover:text-primary transition-colors">
+                  {post.title}
+                </h3>
+
+                <p className="text-xs text-on-surface-variant leading-relaxed line-clamp-3">
+                  {post.excerpt}
+                </p>
               </div>
-            );
-          })}
+
+              <div className="mt-4 pt-3 border-t border-white/[0.03] flex justify-between items-center text-[10px] font-mono select-none text-tertiary/80 font-semibold uppercase">
+                <span>Read full entry</span>
+                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="/notes/journal"
+            className="px-5 py-2.5 border border-primary/40 bg-primary/10 hover:bg-primary/20 text-primary font-mono text-[10px] uppercase font-bold tracking-[0.15em] rounded transition-all focus:outline-none focus:ring-1 focus:ring-primary"
+          >
+            [ OPEN_THE_FULL_ARCHIVE ]
+          </Link>
         </div>
 
       </div>

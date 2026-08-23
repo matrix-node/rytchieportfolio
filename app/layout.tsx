@@ -1,6 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Geist, Inter, JetBrains_Mono } from 'next/font/google';
+import SearchOverlay from '@/components/SearchOverlay';
 import './globals.css';
+
+const geist = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist',
+  display: 'swap',
+});
 
 const inter = Inter({
   subsets: ['latin'],
@@ -14,44 +21,42 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rytchiamacharia.dev';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://rytchiemacharia.me';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Rytchie Macharia | Frontend Developer Portfolio',
+    default: 'Rytchie Macharia | Frontend Developer & Dev Notes',
     template: '%s | Rytchie Macharia',
   },
   description:
-    'Personal developer portfolio of Rytchie Macharia, showcasing frontend engineering, Linux systems, cybersecurity learning, and high-performance web experiences.',
+    'Portfolio and digital garden of Rytchie Macharia — frontend engineering, Linux systems, cybersecurity learning, plus in-depth technical guides and journal notes.',
   keywords: [
     'Rytchie Macharia',
-    'Matrix portfolio',
     'Frontend Developer Kenya',
     'Next.js portfolio',
     'TypeScript',
     'React developer',
     'Linux',
     'Cybersecurity',
+    'Dev Notes',
+    'developer blog',
   ],
   authors: [{ name: 'Rytchie Macharia' }],
   creator: 'Rytchie Macharia',
-  publisher: 'Matrix',
   alternates: {
     canonical: '/',
   },
   icons: {
-    icon: [
-      { url: '/icon.svg', type: 'image/svg+xml' },
-    ],
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
     shortcut: ['/icon.svg'],
   },
   openGraph: {
-    title: 'Rytchie Macharia | Frontend Developer Portfolio',
+    title: 'Rytchie Macharia | Frontend Developer & Dev Notes',
     description:
-      'Obsidian Protocol portfolio: futuristic, high-performance frontend engineering with polished UI and smooth 3D-inspired interactions.',
+      'One site: a polished engineering portfolio and a private-by-default digital garden of technical guides and notes.',
     url: siteUrl,
-    siteName: 'Matrix Portfolio',
+    siteName: 'Rytchie Macharia',
     type: 'website',
     locale: 'en_US',
     images: [
@@ -65,9 +70,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rytchie Macharia | Frontend Developer Portfolio',
-    description:
-      'Futuristic, recruiter-ready developer portfolio with high-performance UI, 3D-inspired visuals, and strong frontend engineering.',
+    title: 'Rytchie Macharia | Frontend Developer & Dev Notes',
+    description: 'Portfolio plus a digital garden of technical guides and notes.',
     images: ['/images/rytchie.jpg'],
   },
   robots: {
@@ -89,8 +93,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${jetbrainsMono.variable}`}>{children}</body>
+    <html className="dark" lang="en">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className={`${geist.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
+        {children}
+        <SearchOverlay />
+      </body>
     </html>
   );
 }

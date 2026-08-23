@@ -34,30 +34,30 @@ export default function ProjectsGrid({ onSelectProject }: ProjectsGridProps) {
       case 'Live':
         return 'border-[#10B981]/25 text-[#10B981] bg-[#10B981]/5';
       case 'In Progress':
-        return 'border-[#00f5ff]/25 text-[#63f7ff] bg-[#00f5ff]/5';
+        return 'border-[#adc6ff]/25 text-[#adc6ff] bg-[#adc6ff]/5';
       case 'Concept':
         return 'border-amber-400/25 text-amber-300 bg-amber-400/5';
       case 'Case Study':
-        return 'border-secondary/20 text-secondary bg-secondary/5';
+        return 'border-secondary/20 text-tertiary bg-secondary/5';
       default:
         return 'border-outline/20 text-outline bg-white/[0.02]';
     }
   };
 
   return (
-    <section id="projects" className="py-20 border-b border-[#3a494a]/10 relative text-left">
+    <section id="projects" className="py-20 border-b border-[#424754]/10 relative text-left">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Title sections */}
         <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <Layers className="w-4 h-4 text-[#00f5ff]" />
+              <Layers className="w-4 h-4 text-[#adc6ff]" />
               <span className="font-mono text-[10px] tracking-widest uppercase text-outline">
                 SYSTEM_BENTO_COMPILER // RUNTIME
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-semibold text-primary font-sans uppercase">
+            <h2 className="text-3xl md:text-4xl font-semibold text-on-surface font-sans uppercase">
               Bento Project Grid
             </h2>
             <p className="font-sans text-sm text-on-surface-variant max-w-xl mt-2 leading-relaxed">
@@ -73,8 +73,8 @@ export default function ProjectsGrid({ onSelectProject }: ProjectsGridProps) {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-3 py-1 font-mono text-[9px] uppercase tracking-wider transition-all rounded-sm cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary-container ${
                   activeCategory === cat
-                    ? 'border border-[#00f5ff] bg-[#00f5ff]/10 text-[#00f5ff]'
-                    : 'border border-[#3a494a]/25 text-on-surface-variant hover:border-[#00f5ff]/40 hover:text-primary-fixed'
+                    ? 'border border-[#adc6ff] bg-[#adc6ff]/10 text-[#adc6ff]'
+                    : 'border border-[#424754]/25 text-on-surface-variant hover:border-[#adc6ff]/40 hover:text-primary-fixed'
                 }`}
               >
                 [ {cat} ]
@@ -93,9 +93,9 @@ export default function ProjectsGrid({ onSelectProject }: ProjectsGridProps) {
               transition={{ duration: 0.3, delay: Math.min(index * 0.05, 0.45) }}
               onMouseMove={handleMouseMove}
               onClick={() => onSelectProject(p)}
-              className="group relative h-[380px] border border-white/10 bg-[#15151e]/50 hover:border-[#00f5ff]/35 rounded-xl overflow-hidden flex flex-col justify-end p-5 select-none transition-all cursor-pointer shadow-lg"
+              className="group relative h-[380px] border border-white/10 bg-[#1c2026]/50 hover:border-[#adc6ff]/35 rounded-xl overflow-hidden flex flex-col justify-end p-5 select-none transition-all cursor-pointer shadow-lg"
               style={{
-                background: 'radial-gradient(140px circle at var(--mouse-x, -100px) var(--mouse-y, -100px), rgba(0, 245, 255, 0.09), transparent 85%)'
+                background: 'radial-gradient(140px circle at var(--mouse-x, -100px) var(--mouse-y, -100px), rgba(173,198,255, 0.09), transparent 85%)'
               }}
             >
               {/* Cover Screenshot Image or CSS Overlay placeholder */}
@@ -109,12 +109,12 @@ export default function ProjectsGrid({ onSelectProject }: ProjectsGridProps) {
                     className="object-cover opacity-60 group-hover:scale-101 group-hover:opacity-85 transition-all duration-700 pointer-events-none"
                   />
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-tr from-[#12121A] to-[#00f5ff]/15 flex items-center justify-center">
+                  <div className="w-full h-full bg-gradient-to-tr from-[#262a31] to-[#adc6ff]/15 flex items-center justify-center">
                     <Terminal className="w-6 h-6 text-outline/30" />
                   </div>
                 )}
                 {/* Visual scanner gradient shroud */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#12121A] to-transparent opacity-95 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#262a31] to-transparent opacity-95 pointer-events-none" />
               </div>
 
               {/* Status node labels */}
@@ -127,10 +127,10 @@ export default function ProjectsGrid({ onSelectProject }: ProjectsGridProps) {
               {/* Copy Context fields */}
               <div className="relative space-y-3 z-10">
                 <div className="space-y-1">
-                  <span className="font-mono text-[9px] uppercase tracking-wider text-secondary block">
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-tertiary block">
                     // {p.category}
                   </span>
-                  <h3 className="text-base font-bold text-primary font-sans leading-snug group-hover:text-[#63f7ff] transition-all">
+                  <h3 className="text-base font-bold text-on-surface font-sans leading-snug group-hover:text-[#adc6ff] transition-all">
                     {p.title}
                   </h3>
                   <p className="text-xs text-on-surface-variant font-sans leading-relaxed line-clamp-2">
@@ -143,7 +143,7 @@ export default function ProjectsGrid({ onSelectProject }: ProjectsGridProps) {
                   {p.tech.slice(0, 3).map((t) => (
                     <span
                       key={t}
-                      className="px-2 py-0.5 bg-white/[0.02] border border-white/[0.05] text-[#b9caca] font-mono text-[8px] uppercase rounded-sm"
+                      className="px-2 py-0.5 bg-white/[0.02] border border-white/[0.05] text-[#c2c6d6] font-mono text-[8px] uppercase rounded-sm"
                     >
                       {t}
                     </span>
@@ -157,12 +157,12 @@ export default function ProjectsGrid({ onSelectProject }: ProjectsGridProps) {
 
                 {/* Tactile Footer diagnostics */}
                 <div className="pt-3 border-t border-white/[0.04] flex items-center justify-between font-mono text-[9px] uppercase tracking-wider text-outline select-none">
-                  <span className="group-hover:text-[#63f7ff] transition-colors flex items-center gap-1">
+                  <span className="group-hover:text-[#adc6ff] transition-colors flex items-center gap-1">
                     <Eye className="w-3.5 h-3.5" /> DECOMPILE_SPECS
                   </span>
                   <div className="flex gap-2">
-                    {p.githubUrl && p.githubUrl !== '#' && <Github className="w-3.5 h-3.5 hover:text-primary transition-colors" />}
-                    {p.liveUrl && p.liveUrl !== '#' && <ExternalLink className="w-3.5 h-3.5 hover:text-primary transition-colors" />}
+                    {p.githubUrl && p.githubUrl !== '#' && <Github className="w-3.5 h-3.5 hover:text-on-surface transition-colors" />}
+                    {p.liveUrl && p.liveUrl !== '#' && <ExternalLink className="w-3.5 h-3.5 hover:text-on-surface transition-colors" />}
                   </div>
                 </div>
               </div>

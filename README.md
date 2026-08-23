@@ -1,89 +1,38 @@
-# Rytchie Macharia Portfolio
+# Rytchie Macharia — Portfolio & Dev Notes
 
-Personal developer portfolio for Rytchie Macharia, branded as Matrix. Built with Next.js App Router, TypeScript, and Tailwind CSS, this site presents a futuristic Obsidian Protocol aesthetic with strong performance, SEO, and recruiter-ready presentation.
+One Next.js site: the Obsidian-engineered portfolio **and** a private-by-default digital garden of technical notes, merged onto a single design system.
 
-## Overview
+## Structure
 
-This project showcases:
+- `/` — portfolio one-pager (hero, about, skills, projects, gallery, timeline, services, contact)
+- `/about /skills /projects /gallery /experience /services /contact` — portfolio pages
+- `/notes` — Dev Notes landing (pinned guide, recently updated, tag cloud)
+- `/notes/guides`, `/notes/journal`, `/notes/projects` — notes indexes; `/notes/{guides,journal}/[slug]` — articles
+- `/search` + **Ctrl/Cmd+K** anywhere — full-text search across notes and projects
+- `/admin` — the Writer's Room (password-protected editor; writes `content/**/*.md`)
+- `/blog` — legacy redirect to `/notes/journal`
 
-- Hero section with animated 3D-inspired visuals
-- About, skills, projects, gallery, experience, services, blog, and contact sections
-- Responsive glassmorphism UI with dark and light theme support
-- Optimized local and remote imagery through Next.js image handling
-- SEO metadata, `sitemap.xml`, and `robots.txt`
-- A polished footer with the required brand signature
+## Writing
 
-## Tech Stack
+Sign in at `/admin/login` (password = `ADMIN_PASSWORD` in `.env.local`). Create/edit/publish guides and journal entries in Markdown — code blocks with `title="file"` headers, GFM tables, and `> [!INFO] / [!TIP] / [!WARNING] / [!DANGER]` callouts. Drafts are invisible publicly. The homepage "Technical Logs & Notes" section and the journal are the same content — one writing system.
 
-- Next.js 15
-- React 19
-- TypeScript
-- Tailwind CSS v4
-- Motion
-- Lucide React
+## Design system
 
-## Getting Started
+Tailwind CSS v4 tokens in `app/globals.css` (Material-3-inspired dark palette: `#10141a` background, `#adc6ff` primary, `#ffb786` tertiary), Geist (headlines) / Inter (body) / JetBrains Mono (code), plus the portfolio's signature grid/glass/glow effects recolored onto the same palette. Dark-only by design.
 
-### Prerequisites
-
-- Node.js 18 or newer
-
-### Install Dependencies
+## Run
 
 ```bash
 npm install
+npm run build && npm start   # port 3000
 ```
 
-### Run the Development Server
+Deploy on a host with a writable filesystem (VPS, homelab, Docker) — the admin writes Markdown files to disk, so serverless platforms like Vercel can't persist edits. Terminate TLS with Caddy/Traefik and point `rytchiemacharia.me` (and optionally `doc.rytchiemacharia.me` → `/notes`) at it.
 
-```bash
-npm run dev
+## Env
+
 ```
-
-Open `http://localhost:3000` in your browser.
-
-## Available Scripts
-
-- `npm run dev` - Start the Next.js development server
-- `npm run build` - Build the project for production
-- `npm run start` - Run the production server locally
-- `npm run lint` - Run TypeScript validation
-- `npm run clean` - Remove the Next.js build output
-
-## Deployment
-
-This project is ready for GitHub and Vercel deployment.
-
-Recommended deployment steps:
-
-1. Push the repository to GitHub.
-2. Import the repository into Vercel.
-3. Set `NEXT_PUBLIC_SITE_URL` in the Vercel environment variables.
-4. Deploy with the default Next.js framework settings.
-
-The repository already includes:
-
-- App Router pages under `app/`
-- Metadata configuration in `app/layout.tsx`
-- `app/sitemap.ts`
-- `app/robots.ts`
-- Optimized local images in `public/images/`
-
-## Project Structure
-
-```txt
-app/
-components/
-data/
-public/images/
-README.md
-package.json
-tsconfig.json
+ADMIN_PASSWORD=...        # writer's room password
+SESSION_SECRET=...        # signs the 7-day session cookie
+NEXT_PUBLIC_SITE_URL=https://rytchiemacharia.me
 ```
-
-## Notes
-
-- The design intentionally preserves the original Obsidian Protocol look and motion style.
-- All image assets should remain in `public/images/` so they work reliably in production.
-- The site is configured to avoid common indexing issues by exposing sitemap and robots endpoints.
-

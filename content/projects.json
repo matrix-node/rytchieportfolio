@@ -1,0 +1,48 @@
+[
+  {
+    "title": "Self-Hosted Cloudflare Tunnel Dashboard",
+    "slug": "tunnel-dashboard",
+    "status": "active",
+    "description": "A custom internal dashboard for managing Cloudflare Zero Trust tunnels across multiple homelab nodes. Features real-time metrics and config deployment.",
+    "tech": [
+      "Go",
+      "Vue.js",
+      "Docker"
+    ],
+    "repo": "https://github.com/rytchie",
+    "demo": "https://github.com/rytchie"
+  },
+  {
+    "title": "Kubernetes GitOps Playground",
+    "slug": "gitops-playground",
+    "status": "active",
+    "description": "An automated provisioning script suite for setting up a local k3s cluster integrated with ArgoCD and sealed-secrets. Designed to bootstrap a production-like environment on a NUC cluster in under 5 minutes.",
+    "tech": [
+      "k3s",
+      "ArgoCD",
+      "Bash"
+    ],
+    "repo": "https://github.com/rytchie"
+  },
+  {
+    "title": "Traefik Middleware Library",
+    "slug": "traefik-middleware-library",
+    "status": "completed",
+    "description": "A curated, tested collection of Traefik middlewares — rate limiting, security headers, and auth-forward chains — versioned as reusable Helm values.",
+    "tech": [
+      "Traefik",
+      "Helm",
+      "YAML"
+    ]
+  },
+  {
+    "title": "NixOS Dotfiles",
+    "slug": "nixos-dotfiles",
+    "status": "on-hold",
+    "description": "Declarative system configurations and dotfiles using Nix flakes. Currently paused while evaluating home-manager vs standalone configurations.",
+    "tech": [
+      "Nix",
+      "Wayland"
+    ]
+  }
+]

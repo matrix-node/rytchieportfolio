@@ -90,7 +90,7 @@ export default function Hero3DScene() {
       ctx.clearRect(0, 0, dimensions.width, dimensions.height);
 
       // 1. Draw Subtle Animated Tech Grid Lines
-      ctx.strokeStyle = 'rgba(0, 245, 255, 0.03)';
+      ctx.strokeStyle = 'rgba(173,198,255, 0.03)';
       ctx.lineWidth = 1;
       const gridSize = 40;
       
@@ -120,7 +120,7 @@ export default function Hero3DScene() {
       }
 
       // Draw outer tactical scanner rings
-      ctx.strokeStyle = 'rgba(0, 245, 255, 0.07)';
+      ctx.strokeStyle = 'rgba(173,198,255, 0.07)';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.arc(centerX, centerY, baseRadius * 1.35, 0, Math.PI * 2);
@@ -140,8 +140,8 @@ export default function Hero3DScene() {
         const radiusY = baseRadius * Math.abs(Math.sin(orbitalAngleRef.current + (l * Math.PI) / layers));
         const radiusX = baseRadius * Math.abs(Math.cos(orbitalAngleRef.current + (l * Math.PI) / layers));
         
-        ctx.strokeStyle = l === 0 ? 'rgba(0, 245, 255, 0.15)' : 'rgba(192, 193, 255, 0.08)';
-        ctx.shadowColor = l === 0 ? 'rgba(0, 245, 255, 0.25)' : 'transparent';
+        ctx.strokeStyle = l === 0 ? 'rgba(173,198,255, 0.15)' : 'rgba(192, 193, 255, 0.08)';
+        ctx.shadowColor = l === 0 ? 'rgba(173,198,255, 0.25)' : 'transparent';
         ctx.shadowBlur = l === 0 ? 8 : 0;
         ctx.lineWidth = l === 0 ? 1.5 : 1;
 
@@ -180,8 +180,8 @@ export default function Hero3DScene() {
         }
 
         // Draw particle node
-        ctx.fillStyle = `rgba(0, 245, 255, ${p.glow})`;
-        ctx.shadowColor = 'rgba(0, 245, 255, 0.4)';
+        ctx.fillStyle = `rgba(173,198,255, ${p.glow})`;
+        ctx.shadowColor = 'rgba(173,198,255, 0.4)';
         ctx.shadowBlur = 4;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
@@ -198,7 +198,7 @@ export default function Hero3DScene() {
           const maxDist = 85;
           if (dist < maxDist) {
             const alpha = (1 - dist / maxDist) * 0.14;
-            ctx.strokeStyle = `rgba(0, 245, 255, ${alpha})`;
+            ctx.strokeStyle = `rgba(173,198,255, ${alpha})`;
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
@@ -222,7 +222,7 @@ export default function Hero3DScene() {
 
         // Draw bounding glass HUD tab
         ctx.fillStyle = 'rgba(18, 18, 26, 0.75)';
-        ctx.strokeStyle = 'rgba(0, 245, 255, 0.2)';
+        ctx.strokeStyle = 'rgba(173,198,255, 0.2)';
         ctx.lineWidth = 1;
 
         const textWidth = ctx.measureText(tag.text).width || 60;
@@ -242,7 +242,7 @@ export default function Hero3DScene() {
         ctx.fill();
 
         // Label text in futuristic JetBrains Mono styling
-        ctx.fillStyle = '#63f7ff'; // primary-fixed
+        ctx.fillStyle = '#adc6ff'; // primary-fixed
         ctx.font = '700 8px "JetBrains Mono", monospace';
         ctx.textAlign = 'center';
         ctx.fillText(tag.text, x + 3, y + 5);
@@ -286,11 +286,11 @@ export default function Hero3DScene() {
         className="w-full h-full block opacity-70 group-hover:opacity-95 transition-opacity duration-500"
       />
       {/* Tiny floating terminal status lines in corner of scene */}
-      <div className="absolute bottom-4 left-6 font-mono text-[9px] text-[#849495] tracking-wider select-none space-y-1 z-10 p-2 glass-panel border border-white/5 bg-slate-950/40 rounded">
+      <div className="absolute bottom-4 left-6 font-mono text-[9px] text-[#849495] tracking-wider select-none space-y-1 z-10 p-2 glass-panel border border-white/5 bg-[#0a0e14]/40 rounded">
         <div><span className="text-[#10B981]">●</span> sys.status = &quot;available&quot;</div>
-        <div><span className="text-[#63f7ff]">●</span> deploying_confidence... done</div>
-        <div><span className="text-secondary">●</span> linux_energy: active</div>
-        <div><span className="text-[#fbffbb]">●</span> bugs: under investigation</div>
+        <div><span className="text-[#adc6ff]">●</span> deploying_confidence... done</div>
+        <div><span className="text-tertiary">●</span> linux_energy: active</div>
+        <div><span className="text-[#ffb786]">●</span> bugs: under investigation</div>
       </div>
     </div>
   );
