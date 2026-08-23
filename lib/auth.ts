@@ -1,4 +1,4 @@
-import { createHmac, createHash, timingSafeEqual } from "crypto";
+import { createHmac, createHash, randomBytes, timingSafeEqual } from "crypto";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -6,12 +6,28 @@ export const SESSION_COOKIE = "rdn_session";
 const SESSION_DAYS = 7;
 export const SESSION_MAX_AGE = SESSION_DAYS * 24 * 3600;
 
-function sessionSecret(): string {
-  return process.env.SESSION_SECRET || "dev-insecure-secret-change-me";
+/**
+ * Fail-closed: if ADMIN_PASSWORD is not configured, no password works.
+ * (Dev convenience only: `ADMIN_PASSWORD=dev` in .env.local.)
+ */
+export function getAdminPassword(): string | null {
+  const pw = process.env.ADMIN_PASSWORD;
+  return pw && pw.length > 0 ? pw : null;
 }
 
-export function getAdminPassword(): string {
-  return process.env.ADMIN_PASSWORD || "rytchie-admin";
+/**
+ * SESSION_SECRET must be set in production. Outside production we fall back to
+ * an ephemeral random secret: sessions can't be forged from the public repo
+ * source, they simply don't survive a process restart.
+ */
+let ephemeralSecret: string | undefined;
+
+function sessionSecret(): string {
+  if (process.env.SESSION_SECRET) return process.env.SESSION_SECRET;
+  if (process.env.NODE_ENV === "production") {
+    throw new Error("SESSION_SECRET is not configured");
+  }
+  return (ephemeralSecret ??= randomBytes(32).toString("hex"));
 }
 
 function hmac(value: string): string {
@@ -31,7 +47,13 @@ export function verifySessionToken(token: string | undefined | null): boolean {
   const expRaw = token.slice(0, dot);
   const sig = token.slice(dot + 1);
   if (!/^\d+$/.test(expRaw) || !/^[a-f0-9]{64}$/.test(sig)) return false;
-  const expected = Buffer.from(hmac(expRaw));
+  let expected: Buffer;
+  try {
+    expected = Buffer.from(hmac(expRaw));
+  } catch {
+    // SESSION_SECRET missing in production: no session can be valid.
+    return false;
+  }
   const given = Buffer.from(sig);
   if (expected.length !== given.length || !timingSafeEqual(expected, given)) {
     return false;

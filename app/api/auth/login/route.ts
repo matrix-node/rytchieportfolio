@@ -16,7 +16,8 @@ export async function POST(req: NextRequest) {
     /* fallthrough to failure */
   }
 
-  if (!password || !safeEqual(password, getAdminPassword())) {
+  const expected = getAdminPassword();
+  if (!password || expected === null || !safeEqual(password, expected)) {
     // Small fixed delay to blunt brute-force timing probes.
     await new Promise((r) => setTimeout(r, 400));
     return NextResponse.json({ error: "Incorrect password" }, { status: 401 });
