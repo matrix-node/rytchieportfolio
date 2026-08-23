@@ -55,7 +55,7 @@ export default async function JournalEntryPage({
               {post.tags.map((t) => (
                 <Link
                   className="px-2 py-1 rounded bg-surface-container-high text-on-surface border border-outline-variant/50 font-label-caps text-label-caps hover:border-primary hover:text-primary transition-colors"
-                  href={`/journal?tag=${encodeURIComponent(t)}`}
+                  href={`/notes/journal?tag=${encodeURIComponent(t)}`}
                   key={t}
                 >
                   #{t}
@@ -75,7 +75,7 @@ export default async function JournalEntryPage({
             {relatedTags.map((t) => (
               <Link
                 className="px-3 py-1.5 rounded-full border border-outline-variant bg-surface-container hover:border-primary hover:text-primary transition-colors font-body-sm text-body-sm text-on-surface"
-                href={`/journal?tag=${encodeURIComponent(t)}`}
+                href={`/notes/journal?tag=${encodeURIComponent(t)}`}
                 key={t}
               >
                 #{t}
@@ -90,7 +90,7 @@ export default async function JournalEntryPage({
               {related.map((r) => (
                 <Link
                   className="group flex flex-col gap-1 border border-outline-variant rounded-lg p-4 bg-surface-container-low hover:border-primary/50 hover:bg-surface-container-high transition-all"
-                  href={`/journal/${r.slug}`}
+                  href={`/notes/journal/${r.slug}`}
                   key={r.slug}
                 >
                   <span className="font-headline-h3 text-headline-h3 text-primary text-base group-hover:underline">

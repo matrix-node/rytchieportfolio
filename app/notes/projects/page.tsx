@@ -56,7 +56,7 @@ export default async function ProjectsPage({
             ) : (
               <Link
                 className="px-4 py-2 bg-surface-container rounded-full border border-outline-variant text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-high transition-colors"
-                href={f === "all" ? "/projects" : `/projects?status=${f}`}
+                href={f === "all" ? "/notes/projects" : `/notes/projects?status=${f}`}
                 key={f}
               >
                 {f === "all" ? "All" : PROJECT_STATUS_LABEL[f]}

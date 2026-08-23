@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const ITEMS = [
-  { label: "Guides", href: "/guides", icon: "auto_stories" },
-  { label: "Journal", href: "/journal", icon: "edit_note" },
-  { label: "Projects", href: "/projects", icon: "inventory_2" },
+  { label: "Guides", href: "/notes/guides", icon: "auto_stories" },
+  { label: "Journal", href: "/notes/journal", icon: "edit_note" },
+  { label: "Projects", href: "/notes/projects", icon: "inventory_2" },
 ];
 
 export default function SideDrawer() {

@@ -56,7 +56,7 @@ export default async function JournalPage({
                   ? "border-primary text-primary bg-primary/10"
                   : "border-outline-variant text-on-surface-variant hover:border-outline hover:text-on-surface"
               }`}
-              href={`/journal?tag=${encodeURIComponent(t)}`}
+              href={`/notes/journal?tag=${encodeURIComponent(t)}`}
               key={t}
             >
               {t}
@@ -97,7 +97,7 @@ export default async function JournalPage({
                       </span>
                     </div>
                     <h3 className="font-headline-h2 text-headline-h2 text-on-surface mb-3 group-hover:text-primary transition-colors">
-                      <Link href={`/journal/${post.slug}`}>{post.title}</Link>
+                      <Link href={`/notes/journal/${post.slug}`}>{post.title}</Link>
                     </h3>
                     <p className="font-body-sm text-body-sm text-on-surface-variant mb-4">
                       {post.excerpt}
@@ -106,7 +106,7 @@ export default async function JournalPage({
                       {post.tags.map((t) => (
                         <Link
                           className="px-2 py-0.5 bg-surface-container-highest text-secondary font-label-caps text-[10px] rounded border border-outline-variant hover:border-primary hover:text-primary transition-colors"
-                          href={`/journal?tag=${encodeURIComponent(t)}`}
+                          href={`/notes/journal?tag=${encodeURIComponent(t)}`}
                           key={t}
                         >
                           {t}

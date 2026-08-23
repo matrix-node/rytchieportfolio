@@ -57,7 +57,7 @@ export default async function GuideArticlePage({
                 <li>
                   <Link
                     className="hover:text-primary transition-colors"
-                    href={`/guides?category=${encodeURIComponent(post.category)}`}
+                    href={`/notes/guides?category=${encodeURIComponent(post.category)}`}
                   >
                     {post.category}
                   </Link>
@@ -106,7 +106,7 @@ export default async function GuideArticlePage({
             {prev ? (
               <Link
                 className="group flex flex-col border border-outline-variant rounded-lg p-4 hover:border-primary hover:bg-surface-container-low transition-all w-32 sm:w-40"
-                href={`/guides/${prev.slug}`}
+                href={`/notes/guides/${prev.slug}`}
               >
                 <span className="text-outline-variant font-label-caps text-[10px] uppercase mb-1">
                   Previous
@@ -121,7 +121,7 @@ export default async function GuideArticlePage({
             {next ? (
               <Link
                 className="group flex flex-col border border-outline-variant rounded-lg p-4 hover:border-primary hover:bg-surface-container-low transition-all w-32 sm:w-40 text-right"
-                href={`/guides/${next.slug}`}
+                href={`/notes/guides/${next.slug}`}
               >
                 <span className="text-outline-variant font-label-caps text-[10px] uppercase mb-1">
                   Next

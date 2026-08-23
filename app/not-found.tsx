@@ -57,8 +57,8 @@ export default function NotFound() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               { href: "/", icon: "home", label: "Homepage" },
-              { href: "/guides", icon: "auto_stories", label: "Guides" },
-              { href: "/journal", icon: "edit_note", label: "Journal" },
+              { href: "/notes/guides", icon: "auto_stories", label: "Guides" },
+              { href: "/notes/journal", icon: "edit_note", label: "Journal" },
             ].map((item) => (
               <Link
                 className="group flex flex-col items-center justify-center p-6 bg-surface-container-low border border-outline-variant rounded-lg hover:border-primary hover:bg-surface-container transition-all"

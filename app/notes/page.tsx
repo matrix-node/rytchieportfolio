@@ -90,7 +90,7 @@ export default function HomePage() {
           </div>
           <Link
             className="rounded-xl border border-outline-variant bg-surface-container-high p-8 relative overflow-hidden group hover:border-primary/30 transition-colors block"
-            href={`/guides/${pinned.slug}`}
+            href={`/notes/guides/${pinned.slug}`}
           >
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
               <span className="material-symbols-outlined text-9xl">architecture</span>
@@ -136,7 +136,7 @@ export default function HomePage() {
                 >
                   <Link
                     className="flex flex-col gap-2"
-                    href={`/${isGuide ? "guides" : "journal"}/${p.slug}`}
+                    href={`/notes/${isGuide ? "guides" : "journal"}/${p.slug}`}
                   >
                     <div className="flex justify-between items-start gap-4">
                       <h4 className="font-headline-h3 text-headline-h3 text-primary text-base group-hover:underline">
@@ -174,7 +174,7 @@ export default function HomePage() {
             {tags.map(([tag, count]) => (
               <Link
                 className="font-label-caps text-label-caps text-on-surface-variant bg-surface-container-high border border-outline-variant px-3 py-1.5 rounded-full hover:border-primary hover:text-primary transition-colors"
-                href={`/journal?tag=${encodeURIComponent(tag)}`}
+                href={`/notes/journal?tag=${encodeURIComponent(tag)}`}
                 key={tag}
               >
                 #{tag} <span className="text-outline">({count})</span>

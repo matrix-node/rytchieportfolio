@@ -50,7 +50,7 @@ export default async function GuidesPage({
             ) : (
               <Link
                 className="px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-caps text-label-caps border border-outline-variant hover:bg-surface-container-high transition-colors"
-                href={c === "All" ? "/guides" : `/guides?category=${encodeURIComponent(c)}`}
+                href={c === "All" ? "/notes/guides" : `/notes/guides?category=${encodeURIComponent(c)}`}
                 key={c}
               >
                 {c}
@@ -78,7 +78,7 @@ export default async function GuidesPage({
                 className={`group relative bg-surface border border-outline-variant rounded-lg p-6 hover:border-outline transition-colors duration-300 flex flex-col h-full ${
                   i === 0 ? "md:col-span-2" : ""
                 }`}
-                href={`/guides/${g.slug}`}
+                href={`/notes/guides/${g.slug}`}
                 key={g.slug}
               >
                 <div className="flex justify-between items-start mb-4">
